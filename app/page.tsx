@@ -2,33 +2,37 @@ import Search from "@/components/Search";
 import { Product } from "@/lib/types";
 import { Heading1 } from "lucide-react";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default async function Home() {
-
   const getProducts = async () => {
-    const URL = process.env.BASE_URL
+    const URL = process.env.BASE_URL;
     try {
-      const products = await fetch(URL+'/products').then(res => {
+      const products = await fetch(URL + "/products").then((res) => {
         if (!res.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
-        return res.json()
-      })
-      return products
+        return res.json();
+      });
+      return products;
     } catch (error) {
-      console.error(error)
-      return []
+      console.error(error);
+      return [];
     }
-  }
+  };
 
-  const products: Product[] = await getProducts()
+  const products: Product[] = await getProducts();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <Suspense>
+        <Search placeholder="Search" />
+      </Suspense>
 
-      <Search placeholder="Search"/>
       {products.length === 0 && <h2>Error fetching products.</h2>}
-      {products.map(prod => <h1 key={prod.id}>{prod.title}</h1>)}
+      {products.map((prod) => (
+        <h1 key={prod.id}>{prod.title}</h1>
+      ))}
     </main>
   );
 }
