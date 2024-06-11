@@ -1,10 +1,21 @@
+import AllProducts from "@/components/AllProducts";
 import Search from "@/components/Search";
 import { Product } from "@/lib/types";
 import { Heading1 } from "lucide-react";
 import Image from "next/image";
 import { Suspense } from "react";
 
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
+  const query = searchParams?.query || "";
+  const currentPage = Number(searchParams?.page) || 1;
+
   const getProducts = async () => {
     const URL = process.env.BASE_URL;
     try {
@@ -24,15 +35,13 @@ export default async function Home() {
   const products: Product[] = await getProducts();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col  gap-10 p-24">
       <Suspense>
         <Search placeholder="Search" />
       </Suspense>
 
       {products.length === 0 && <h2>Error fetching products.</h2>}
-      {products.map((prod) => (
-        <h1 key={prod.id}>{prod.title}</h1>
-      ))}
+      <AllProducts products={products} query={query} currentPage={currentPage}/>
     </main>
   );
 }
