@@ -7,7 +7,7 @@ export default function Cart() {
   return (
     <main className="flex min-h-screen flex-col  p-24">
       {
-        cart.map(item => <h1>{item.title}</h1>)
+        cart.map(item => <h1 key={item.id}>{item.title}</h1>)
       }
     </main>
   );
