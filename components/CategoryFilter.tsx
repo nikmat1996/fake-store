@@ -54,7 +54,7 @@ export function CategoryFilter() {
         <SelectGroup>
           <SelectLabel>Categories</SelectLabel>
           <SelectItem className="capitalize" value={"all"}>All</SelectItem>
-          {categories.map((item: string) =>  <SelectItem className="capitalize" value={item}>{item}</SelectItem>)}
+          {categories.map((item: string) =>  <SelectItem key={item} className="capitalize" value={item}>{item}</SelectItem>)}
         </SelectGroup>
       </SelectContent>
     </Select>
