@@ -19,7 +19,7 @@ const AllProducts: React.FC<AllProductsProps> = ({ products, query, currentPage 
   return (
     <div>
       {filteredProducts.map((item) => (
-        <div>
+        <div key={item.id}>
             <h1 key={item.id}>{item.title}</h1>
             <AddToCart product={item}/>
         </div>
