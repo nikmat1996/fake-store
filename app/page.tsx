@@ -44,7 +44,7 @@ export default async function Home({
       </Suspense>
       <CategoryFilter />
       {products.length === 0 && <h2>Error fetching products.</h2>}
-      <AllProducts products={products} query={query} currentPage={currentPage}/>
+      <AllProducts products={products} query={query} currentPage={currentPage} category={category}/>
     </main>
   );
 }

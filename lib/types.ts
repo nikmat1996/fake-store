@@ -1,9 +1,9 @@
 // productTypes.ts
 
-export interface Rating {
-    rate: number;
-    count: number;
-}
+// export interface Rating {
+//     rate: number;
+//     count: number;
+// }
 
 export interface Product {
     id: number;
@@ -12,5 +12,5 @@ export interface Product {
     description: string;
     category: string;
     image: string;
-    rating: Rating;
+    // rating: Rating;
 }
