@@ -15,10 +15,9 @@ const AllProducts: React.FC<AllProductsProps> = ({ products, query, currentPage,
   // Filter the products based on the query and category
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(query.toLowerCase()) &&
-    (category === 'all' || product.category.toLowerCase() === category.toLowerCase())
+    (category === '' || category === 'all' || product.category.toLowerCase() === category.toLowerCase())
   );
 
-  console.log(filteredProducts)
 
   return (
     <div className='grid gap-10 gap-y-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
