@@ -23,7 +23,13 @@ export const useCartStore = create<CartStore>()(
     persist(
         (set) => ({
             ...defaultInitState,
-            addToCart: (newProduct) => set((state) => ({ cart: [...state.cart, newProduct] })),
+            addToCart: (newProduct) => set((state) => {
+              const exists = state.cart.some((item) => item.id === newProduct.id);
+              if (!exists) {
+                return { cart: [...state.cart, newProduct] };
+              }
+              return state;
+            }),
             removeFromCart: (id) => set((state) => ({ cart: state.cart.filter((item) => item.id !== id) }))
         }),
         { name: 'cart-fakestore' } // name of item in the storage (must be unique)
