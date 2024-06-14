@@ -1,10 +1,9 @@
 import AllProducts from "@/components/AllProducts";
 import { CategoryFilter } from "@/components/CategoryFilter";
+import PriceRange from "@/components/PriceRange";
 import Search from "@/components/Search";
 import { SortFilter } from "@/components/SortFilter";
 import { Product } from "@/lib/types";
-import { Heading1 } from "lucide-react";
-import Image from "next/image";
 import { Suspense } from "react";
 
 export default async function Home({
@@ -15,6 +14,8 @@ export default async function Home({
     page?: string;
     category?: string;
     sort?: string;
+    min?: string;
+    max?: string;
   };
 }) {
 
@@ -22,6 +23,8 @@ export default async function Home({
     query: searchParams?.query || "",
     category: searchParams?.category || "",
     currentPage: Number(searchParams?.page) || 1,
+    minPrice: Number(searchParams?.min) || 5,
+    maxPrice: Number(searchParams?.max) || 1000,
     sort: searchParams?.sort || ""
   }
 
@@ -48,9 +51,10 @@ export default async function Home({
       <Suspense>
         <Search placeholder="Search" />
       </Suspense>
-      <div className="flex gap-5">
+      <div className="flex gap-5 items-center mb-6">
         <CategoryFilter />
         <SortFilter />
+        <PriceRange />
       </div>
       {products.length === 0 && <h2>Error fetching products.</h2>}
       <AllProducts products={products} {...AllProductsProps} />
