@@ -11,6 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 export default function Cart() {
   const cart = useCartStore((state) => state.cart);
@@ -38,7 +39,7 @@ export default function Cart() {
             {cart.map((item) => (
               <TableRow key={item.id}>
                 <TableCell>
-                  <img src={item.image} alt={item.title} className="h-16 w-16 object-cover" />
+                  <Image src={item.image} alt={item.title} className="h-16 w-16 object-contain" />
                 </TableCell>
                 <TableCell className="font-medium">{item.title}</TableCell>
                 <TableCell className="text-right">${item.price.toFixed(2)}</TableCell>

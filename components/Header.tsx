@@ -6,8 +6,8 @@ const Header = () => {
     <nav className="space-x-4 mx-auto p-5 flex items-center">
       <Link href={'/'}>Home</Link>
       <div className="relative flex items-center">
-        <Link href={'/cart'}>Cart</Link>
-        <CartBadge />
+        <Link href={'/cart'} className="flex items-center">Cart<CartBadge /></Link>
+        
       </div>
     </nav>
   );
