@@ -1,6 +1,7 @@
 import AllProducts from "@/components/AllProducts";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import Search from "@/components/Search";
+import { SortFilter } from "@/components/SortFilter";
 import { Product } from "@/lib/types";
 import { Heading1 } from "lucide-react";
 import Image from "next/image";
@@ -13,11 +14,16 @@ export default async function Home({
     query?: string;
     page?: string;
     category?: string;
+    sort?: string;
   };
 }) {
-  const query = searchParams?.query || "";
-  const category = searchParams?.category || "";
-  const currentPage = Number(searchParams?.page) || 1;
+
+  const AllProductsProps = {
+    query: searchParams?.query || "",
+    category: searchParams?.category || "",
+    currentPage: Number(searchParams?.page) || 1,
+    sort: searchParams?.sort || ""
+  }
 
   const getProducts = async () => {
     const URL = process.env.BASE_URL;
@@ -42,9 +48,12 @@ export default async function Home({
       <Suspense>
         <Search placeholder="Search" />
       </Suspense>
-      <CategoryFilter />
+      <div className="flex gap-5">
+        <CategoryFilter />
+        <SortFilter />
+      </div>
       {products.length === 0 && <h2>Error fetching products.</h2>}
-      <AllProducts products={products} query={query} currentPage={currentPage} category={category}/>
+      <AllProducts products={products} {...AllProductsProps} />
     </main>
   );
 }

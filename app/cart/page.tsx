@@ -39,7 +39,7 @@ export default function Cart() {
             {cart.map((item) => (
               <TableRow key={item.id}>
                 <TableCell>
-                  <Image src={item.image} alt={item.title} className="h-16 w-16 object-contain" />
+                  <Image src={item.image} alt={item.title} width={64} height={64} className="h-16 w-16 object-contain" />
                 </TableCell>
                 <TableCell className="font-medium">{item.title}</TableCell>
                 <TableCell className="text-right">${item.price.toFixed(2)}</TableCell>
