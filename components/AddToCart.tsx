@@ -1,4 +1,3 @@
-// @/components/AddToCart.tsx
 "use client";
 
 import { useCartStore } from "@/lib/store";
@@ -29,7 +28,7 @@ const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
   return (
     <button
       className={twMerge(
-        "m-6 box-border mt-auto py-2 px-4 rounded-lg focus:outline-none capitalize",
+        "m-6 mt-auto py-2 px-4 rounded-lg focus:outline-none capitalize ",
         isInCart ? "bg-green-600 hover:bg-green-700 focus:bg-green-700 text-white" : "bg-slate-600 hover:bg-slate-700 focus:bg-slate-700 text-white"
       )}
       onClick={handleButtonClick}

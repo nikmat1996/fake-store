@@ -38,7 +38,7 @@ export default async function Home({
   const products: Product[] = await getProducts();
 
   return (
-    <main className="flex min-h-screen flex-col  gap-10 p-24">
+    <main className="flex min-h-screen flex-col  gap-10 p-24 bg-white">
       <Suspense>
         <Search placeholder="Search" />
       </Suspense>
