@@ -1,6 +1,7 @@
 import AllProducts from "@/components/AllProducts";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import PriceRange from "@/components/PriceRange";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Search from "@/components/Search";
 import { SortFilter } from "@/components/SortFilter";
 import { Product } from "@/lib/types";
@@ -48,9 +49,9 @@ export default async function Home({
 
   return (
     <main className="flex min-h-screen flex-col  gap-10 p-24 bg-white">
-      <Suspense>
+      {/* <Suspense> */}
         <Search placeholder="Search" />
-      </Suspense>
+      {/* </Suspense> */}
       <div className="flex gap-5 items-center mb-6">
         <CategoryFilter />
         <SortFilter />
@@ -58,6 +59,8 @@ export default async function Home({
       </div>
       {products.length === 0 && <h2>Error fetching products.</h2>}
       <AllProducts products={products} {...AllProductsProps} />
+      <ScrollToTopButton />
+
     </main>
   );
 }

@@ -18,6 +18,7 @@ const PriceRange: React.FC = () => {
   const handleRangeChange = (value: [number, number]) => {
     setRange(value);
     const params = new URLSearchParams(searchParams);
+    params.set('page', '1');
     params.set('min', value[0].toString());
     params.set('max', value[1].toString());
     router.replace(`${pathname}?${params.toString()}`);

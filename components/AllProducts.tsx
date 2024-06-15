@@ -2,6 +2,7 @@ import React from 'react';
 import { Product } from '@/lib/types';
 import ProductCard from './ProductCard';
 import Pagination from './Pagination';
+import ScrollToTopButton from './ScrollToTopButton';
 
 interface AllProductsProps {
   products: Product[];
@@ -40,13 +41,19 @@ const AllProducts: React.FC<AllProductsProps> = (props) => {
 
   return (
     <>
-      <div className='grid gap-10 gap-y-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
-        {paginatedProducts.map((item) => (
-          <div key={item.id} className='flex'>
-            <ProductCard product={item} />
-          </div>
-        ))}
-      </div>
+      {paginatedProducts.length > 0 ? (
+        <div className='grid gap-10 gap-y-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
+          {paginatedProducts.map((item) => (
+            <div key={item.id} className='flex'>
+              <ProductCard product={item} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className='flex justify-center items-center py-20'>
+          <p className='text-lg font-medium'>No products found that match your criteria.</p>
+        </div>
+      )}
       <Pagination currentPage={currentPage} itemsCount={totalItems} />
     </>
   );

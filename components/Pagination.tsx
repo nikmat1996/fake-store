@@ -35,6 +35,10 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, itemsCount }) => {
     }
   };
 
+  if (totalPages <= 1) {
+    return null; // Don't render the pagination if there's only one page
+  }
+
   return (
     <div className="flex justify-center items-center mt-8 w-full">
       <button
