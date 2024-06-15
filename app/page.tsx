@@ -4,8 +4,8 @@ import PriceRange from "@/components/PriceRange";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Search from "@/components/Search";
 import { SortFilter } from "@/components/SortFilter";
+import StickyCart from "@/components/StickyCart";
 import { Product } from "@/lib/types";
-import { Suspense } from "react";
 
 export default async function Home({
   searchParams,
@@ -19,15 +19,14 @@ export default async function Home({
     max?: string;
   };
 }) {
-
   const AllProductsProps = {
     query: searchParams?.query || "",
     category: searchParams?.category || "",
     currentPage: Number(searchParams?.page) || 1,
     minPrice: Number(searchParams?.min) || 5,
     maxPrice: Number(searchParams?.max) || 1000,
-    sort: searchParams?.sort || ""
-  }
+    sort: searchParams?.sort || "",
+  };
 
   const getProducts = async () => {
     const URL = process.env.BASE_URL;
@@ -49,18 +48,15 @@ export default async function Home({
 
   return (
     <main className="flex min-h-screen flex-col w-full max-w-5xl mx-auto gap-10 pb-20 pt-10 px-5 bg-white items-center">
-      {/* <Suspense> */}
-        <Search placeholder="Search" />
-      {/* </Suspense> */}
+      <StickyCart />
+      <Search placeholder="Search" />
       <div className="flex w-full gap-5 items-center mb-6 flex-col sm:flex-row">
         <CategoryFilter />
         <SortFilter />
         <PriceRange />
       </div>
-      {products.length === 0 && <h2>Error fetching products.</h2>}
       <AllProducts products={products} {...AllProductsProps} />
       <ScrollToTopButton />
-
     </main>
   );
 }
