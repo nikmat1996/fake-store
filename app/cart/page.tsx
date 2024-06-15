@@ -19,7 +19,7 @@ export default function Cart() {
   const totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
 
   return (
-    <main className="flex min-h-screen flex-col p-24">
+    <main className="flex min-h-screen flex-col p-10 py-20 md:p-24">
       {cart.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-full">
           <h1 className="text-2xl font-semibold mb-4">Your cart is empty</h1>

@@ -48,11 +48,11 @@ export default async function Home({
   const products: Product[] = await getProducts();
 
   return (
-    <main className="flex min-h-screen flex-col  gap-10 p-24 bg-white">
+    <main className="flex min-h-screen flex-col w-full max-w-5xl mx-auto gap-10 pb-20 pt-10 px-5 bg-white items-center">
       {/* <Suspense> */}
         <Search placeholder="Search" />
       {/* </Suspense> */}
-      <div className="flex gap-5 items-center mb-6">
+      <div className="flex w-full gap-5 items-center mb-6 flex-col sm:flex-row">
         <CategoryFilter />
         <SortFilter />
         <PriceRange />

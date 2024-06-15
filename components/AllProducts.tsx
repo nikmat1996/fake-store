@@ -2,7 +2,6 @@ import React from 'react';
 import { Product } from '@/lib/types';
 import ProductCard from './ProductCard';
 import Pagination from './Pagination';
-import ScrollToTopButton from './ScrollToTopButton';
 
 interface AllProductsProps {
   products: Product[];

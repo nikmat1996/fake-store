@@ -31,7 +31,7 @@ const PriceRange: React.FC = () => {
   }, [searchParams]);
 
   return (
-    <div className="w-full max-w-48 ml-auto mb-2">
+    <div className="w-full max-w-60 sm:ml-auto mb-2 sm:pr-10">
         <p className="text-xs text-gray-600 mb-2">Select a price range:</p>
         <Slider
             defaultValue={[5, 1000]}
