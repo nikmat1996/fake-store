@@ -4,7 +4,6 @@ import PriceRange from "@/components/PriceRange";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Search from "@/components/Search";
 import { SortFilter } from "@/components/SortFilter";
-import StickyCart from "@/components/StickyCart";
 import { Product } from "@/lib/types";
 
 export default async function Home({
@@ -48,7 +47,6 @@ export default async function Home({
 
   return (
     <main className="flex min-h-screen flex-col w-full max-w-5xl mx-auto gap-10 pb-20 pt-10 px-5 bg-white items-center">
-      <StickyCart />
       <Search placeholder="Search" />
       <div className="flex w-full gap-5 items-center mb-6 flex-col sm:flex-row">
         <CategoryFilter />
